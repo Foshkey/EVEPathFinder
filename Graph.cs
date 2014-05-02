@@ -44,13 +44,13 @@ namespace Path_Finder
 {
     class Graph
     {
-        private List<List<Vertex>> AdjacencyList;
-        private Dictionary<Vertex, int> indices; // Look up dictionary for vertices
+        private Dictionary<Vertex, List<Vertex>> AdjacencyList;
+        //private Dictionary<Vertex, int> indices; // Look up dictionary for vertices
 
         public Graph()
         {
-            AdjacencyList = new List<List<Vertex>>();
-            indices = new Dictionary<Vertex, int>();
+            AdjacencyList = new Dictionary<Vertex, List<Vertex>>();
+            //indices = new Dictionary<Vertex, int>();
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Path_Finder
         /// <returns></returns>
         public Vertex[] getVertices()
         {
-            try { return indices.Keys.ToArray(); }
+            try { return AdjacencyList.Keys.ToArray(); }
             catch { return new Vertex[0]; }
         }
 
@@ -84,7 +84,7 @@ namespace Path_Finder
         /// <returns>True if adjacent</returns>
         public bool adjacent(Vertex x, Vertex y)
         {
-            try { return AdjacencyList[indices[x]].Contains(y); }
+            try { return AdjacencyList[x].Contains(y); }
             catch { return false; }
         }
 
@@ -95,7 +95,7 @@ namespace Path_Finder
         /// <returns></returns>
         public Vertex[] neighbors(Vertex x)
         {
-            try { return AdjacencyList[indices[x]].ToArray(); }
+            try { return AdjacencyList[x].ToArray(); }
             catch { return new Vertex[0]; }
         }
 
@@ -107,8 +107,8 @@ namespace Path_Finder
         {
             try
             {
-                indices.Add(x, AdjacencyList.Count);
-                AdjacencyList.Add(new List<Vertex>());
+                //indices.Add(x, AdjacencyList.Count);
+                AdjacencyList.Add(x, new List<Vertex>());
             }
             catch { return; }
         }
@@ -124,8 +124,8 @@ namespace Path_Finder
             {
                 if (!adjacent(x, y))
                 {
-                    AdjacencyList[indices[x]].Add(y);
-                    AdjacencyList[indices[y]].Add(x);
+                    AdjacencyList[x].Add(y);
+                    AdjacencyList[y].Add(x);
                 }
             }
             catch { return; }
@@ -137,7 +137,7 @@ namespace Path_Finder
         /// <param name="x"></param>
         public void delete(Vertex x)
         {
-            try { AdjacencyList.RemoveAt(indices[x]); }
+            try { AdjacencyList.Remove(x); }
             catch { return; }
         }
 
@@ -150,8 +150,8 @@ namespace Path_Finder
         {
             try
             {
-                AdjacencyList[indices[x]].Remove(y);
-                AdjacencyList[indices[y]].Remove(x);
+                AdjacencyList[x].Remove(y);
+                AdjacencyList[y].Remove(x);
             }
             catch { return; }
         }
@@ -164,7 +164,7 @@ namespace Path_Finder
         public Vertex getVertex(string name)
         {
             // Warning: Costly method. Avoid using.
-            foreach (Vertex x in indices.Keys)
+            foreach (Vertex x in AdjacencyList.Keys)
                 if (x.name.Equals(name)) return x;
             return null;
         }
@@ -176,7 +176,7 @@ namespace Path_Finder
         /// <returns></returns>
         public Vertex getVertexByID(long id)
         {
-            foreach (Vertex x in indices.Keys)
+            foreach (Vertex x in AdjacencyList.Keys)
                 if (x.id == id) return x;
             return null;
         }
@@ -185,10 +185,10 @@ namespace Path_Finder
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            foreach (Vertex x in indices.Keys)
+            foreach (Vertex x in AdjacencyList.Keys)
             {
                 sb.Append(x.name + " " + x.pos + ": ");
-                foreach (Vertex y in AdjacencyList[indices[x]])
+                foreach (Vertex y in AdjacencyList[x])
                 {
                     sb.Append(y.name + ", ");
                 }
