@@ -1,0 +1,47 @@
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *        _______              __     __                     *
+ *       / _____/             / /    / /                     *
+ *      / /__ _____   ______ / /___ / /__  ______ __  __     *
+ *     / ___// __  | / ____// __  // //_/ / __  // /_/ /     *
+ *    / /   / /_/ /_|__  | / / / // / \  / ____//___  /      *
+ *   /_/   |_____//_____/ /_/ /_//_/ \_\/_____//_____/       *
+ *                                                           *
+ * This source file is developed by Joshua J. Nelson         *
+ * Contact: foshkey@gmail.com                                *
+ *                                                           *
+ * Permission is hereby granted, free of charge, to any      *
+ * person obtaining a copy of this software and associated   *
+ * documentation files (the "Software"), to deal in the      *
+ * Software without restriction, including without           *
+ * limitation the rights to use, copy, modify, merge,        *
+ * publish, distribute, sublicense, and/or sell copies of    *
+ * the Software, and to permit persons to whom the Software  *
+ * is furnished to do so, subject to the following           *
+ * conditions:                                               *
+ *                                                           *
+ * The above notice and this permission notice shall be      *
+ * included in all copies or substantial portions of the     *
+ * Software.                                                 *
+ *                                                           *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY *
+ * KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO    *
+ * THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A          *
+ * PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL *
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, *
+ * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF       *
+ * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN   *
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS *
+ * IN THE SOFTWARE.                                          *
+ *                                                           *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ 
+This was a school project for a class called "Graph Theory and Applications", a relatively interesting course considering the graph data structure to solve programming problems. This specific project used the domain of EVE Online, an MMO game developed by CCP, specifically the star map associated with the game. The application of the project was to perform an A* algorithm search on the star map (stored in a db file) and output the shortest path between two stars in terms of traversal distance.
+
+Paper Abstract:
+In the domain of Galactic Star Mapping, there exists such a problem of finding the shortest path between any two stars. This domain is largely used by simulations that use star traversal among a galactic structure. As observed, the shortest path between two stars problem has been reputably difficult to compute in an efficient amount of time. The model is relatively simple: each star in the galactic structure is a node and an edge would represent adjacency to another star that can easily traveled to from the original star. Given that model, the computation of the shortest path is rather simple. The problem therein lies the efficiency of such computation. Traditionally, a Breadth-First-Search algorithm is performed on the star map, yielding a shortest path in terms of number of traversals. However, the weight of each traversal is not considered, thus yielding a sub-optimal shortest path in terms of total traversal weight.
+A* is a searching algorithm commonly used in Artificial Intelligence in finding a shortest path to a destination. This algorithm will be used in solving this shortest path problem. The parameters of this algorithm will be the star map with the star systems and adjacent star systems, each with their set of spatial coordinates in the galaxy. The weight of edges will be determined by the distance between the two stars that the edge connects. From there, A* will efficiently calculate the optimal shortest path route between two star systems, in terms of distance travelled.
+
+Full Paper: https://dl.dropboxusercontent.com/u/26920941/ProjectFinalReport.pdf
+
+Application Download: https://dl.dropboxusercontent.com/u/26920941/Path%20Finder/publish.htm
+Note: May report malicious file due to lack of downloads. You have my word that it is not malicious.
